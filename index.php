@@ -1,10 +1,14 @@
 <?php
 require_once ('_assets/_inc/init.inc.php');
 
-echo "<br><br><br><pre>";
+/*echo "<br><br><br>GET<pre>";
 print_r($_GET);
 echo "</pre>";
 
+echo "<br><br>POST<br><pre>";
+print_r($_POST);
+echo "</pre>";
+*/
 
 /*Par défaut cette page affiche dynamiquement tous les produits signalés « libre » et dont la date d’arrivée est supérieure à la date du jour.*/
 $req = $bdd -> query("	SELECT p.*, s.*
@@ -23,31 +27,6 @@ if ($resultat) {
 	$categories = $resultat -> fetchAll();
 }
 
-// Filtre - Catégorie 
-if (isset($_GET['categorie']) && !empty($_GET['categorie']) && is_string($_GET['categorie'])) {
-	$req = $bdd -> prepare("	SELECT p.*, s.*
-							FROM salle s
-							LEFT JOIN produit p 
-							ON p.id_salle = s.id_salle
-							WHERE p.etat = 'libre' AND p.date_arrivee > CURDATE() AND s.categorie = :categorie");
-
-	
-	$req -> bindParam(':categorie', $_GET['categorie'], PDO::PARAM_STR);
-	$req -> execute();
-	if ($req -> rowCount() > 0) {
-		$produits = $req -> fetchAll();
-	} else {
-		$req = $bdd -> query("	SELECT p.*, s.*
-								FROM salle s
-								LEFT JOIN produit p 
-								ON p.id_salle = s.id_salle
-								WHERE p.etat = 'libre' AND p.date_arrivee > CURDATE()");
-
-		$produits = $req -> fetchAll();		
-	}	
-} 
-
-
 /*---------------------------------------------------------------*/
 
 /*Recuperation des Villes*/
@@ -56,29 +35,7 @@ if ($resultat) {
 	$villes = $resultat -> fetchAll();
 }
 
-// Filtre - Villes 
-if (isset($_GET['ville']) && !empty($_GET['ville']) && is_string($_GET['ville'])) {
-	$req = $bdd -> prepare("	SELECT p.*, s.*
-							FROM salle s
-							LEFT JOIN produit p 
-							ON p.id_salle = s.id_salle
-							WHERE p.etat = 'libre' AND p.date_arrivee > CURDATE() AND s.ville = :ville");
 
-	
-	$req -> bindParam(':ville', $_GET['ville'], PDO::PARAM_STR);
-	$req -> execute();
-	if ($req -> rowCount() > 0) {
-		$produits = $req -> fetchAll();
-	} else {
-		$req = $bdd -> query("	SELECT p.*, s.*
-								FROM salle s
-								LEFT JOIN produit p 
-								ON p.id_salle = s.id_salle
-								WHERE p.etat = 'libre' AND p.date_arrivee > CURDATE()");
-
-		$produits = $req -> fetchAll();	
-	}	
-} 
 
 /*---------------------------------------------------------------*/
 
@@ -125,7 +82,7 @@ if ($resultat) {
 	
 }*/
 
-// Filtre - Prix 
+/*// Filtre - Prix 
 if (isset($_GET['prix']) && !empty($_GET['prix']) && is_numeric($_GET['prix'])) {
 	$req = $bdd -> prepare("SELECT p.*, s.*
 							FROM salle s
@@ -148,7 +105,7 @@ if (isset($_GET['prix']) && !empty($_GET['prix']) && is_numeric($_GET['prix'])) 
 		$produits = $req -> fetchAll();	
 	}	
 } 
-
+*/
 
 
 
@@ -167,8 +124,8 @@ require_once ('_assets/_inc/header-front.inc.php');
 			<li class="list-group-item list-group-item-action"><a href="index.php">Toutes les salles</a></li>
 
 			<?php foreach ($categories AS $categorie) : ?>
-		  	<li class="list-group-item list-group-item-action">
-		  		<a href="index.php?categorie=<?= $categorie['categorie']; ?>"><?= ucfirst($categorie['categorie']); ?></a>
+		  	<li class="list-group-item list-group-item-action categorie" value="<?= $categorie['categorie']; ?>">
+		  		<?= ucfirst($categorie['categorie']); ?>
 		  	</li>
 		  	<?php endforeach; ?>
 		</ul>
@@ -177,8 +134,8 @@ require_once ('_assets/_inc/header-front.inc.php');
 		<ul class="list-group">
 			
 			<?php foreach ($villes AS $ville) : ?>
-		  	<li class="list-group-item list-group-item-action">
-		  		<a href="index.php?ville=<?= $ville['ville']; ?>"><?= ucfirst($ville['ville']); ?></a>
+		  	<li class="list-group-item list-group-item-action ville" value="<?= $ville['ville']; ?>">
+		  		<?= ucfirst($ville['ville']); ?>
 		  	</li>
 		  	<?php endforeach; ?>
 		</ul>
@@ -186,7 +143,7 @@ require_once ('_assets/_inc/header-front.inc.php');
 		<h2>Capacité</h2>
 		<form method="get" action="">
 			<div class="form-group">
-		    <select class="form-control" id="selectCapacite">
+		    <select class="form-control" id="selectCapacite" name="selectCapacite">
 				<?php foreach ($capacites AS $capacite) : ?>
 		      	<option><?= $capacite['capacite']; ?></option>
 				<?php endforeach; ?>
@@ -195,9 +152,11 @@ require_once ('_assets/_inc/header-front.inc.php');
 		</form>
 
 		<h2>Prix max</h2>
-		<form method="get" action="">
+		<form method="post" action="">
+			<input id="par" name="par" type="hidden" value="">
+
 			<div class="form-group">
-		    <select class="form-control" id="selectPrix">
+		    <select class="form-control" id="selectPrix" name="selectPrix">
 				<?php foreach ($prixs AS $prix) : ?>
 		      	<option><?= $prix['prix']; ?></option>
 				<?php endforeach; ?>
@@ -205,7 +164,7 @@ require_once ('_assets/_inc/header-front.inc.php');
 		  </div>
 		</form>		
 
-		<h2>Période</h2>
+<!-- 		<h2>Période</h2>
 		<form method="get" action="">
 			<div class="form-group">
 				<label for="selectDateArrive">Date d'arrivée</label>
@@ -215,7 +174,7 @@ require_once ('_assets/_inc/header-front.inc.php');
 				<label for="selectDateDepart">Date de départ</label>
 				<input type="date" name="selectDateArrive" id="selectDateDepart">
 		  </div>
-		</form>		
+		</form>	 -->	
 
 
 
@@ -224,7 +183,7 @@ require_once ('_assets/_inc/header-front.inc.php');
 	<!-- Affichage des salles -->
 	<div class="col-md-9">
 		<h2>Nos salles</h2>
-		<div class="row">
+		<div class="row" id="salles">
 			<?php foreach ($produits as $produit) : ?>
 			<div class="card col-md-4">
 				
