@@ -112,7 +112,7 @@ if ($_POST['id'] != -1) {
         $tab['fiche'] .= '<label for="id_salle" style="width:25%;">id_salle</label>';
         $tab['fiche'] .= '<label for="note" style="width:25%;">note</label>';
         // $tab['fiche'] .= '<input type="hidden" id="id" name="id" value="' . $enr['id_avis'] .'" >';
-        $tab['fiche'] .= '<input type="text" class="" style="width:25%;" id="id_avis" name="id_avis" value="' . $enr['id_avis'] .'" >';
+        $tab['fiche'] .= '<input type="text" class="" style="width:25%;" id="id" name="id" value="' . $enr['id_avis'] .'" >';
         $tab['fiche'] .= $listemembre;
         // $tab['fiche'] .= '<input type="text" class="" style="width:25%;" id="id_membre" name="id_membre" value="' . $enr['id_membre'] .'" >';
         $tab['fiche'] .= $listesalle;
@@ -120,7 +120,7 @@ if ($_POST['id'] != -1) {
         $tab['fiche'] .= '<input type="text" id="note" name="note" style="width:25%;" value="' . $enr['note'] .'" >';
         $tab['fiche'] .= '<div class="clear"></div>';
         $tab['fiche'] .= '<label for="commentaire" style="width:100%;">commentaire</label>';
-        $tab['fiche'] .= '<textarea type="text" id="commentaire" name="commentaire" rows="5" style="width:100%;">' . $enr['commentaire'] .'"</textarea>';
+        $tab['fiche'] .= '<textarea type="text" id="commentaire" name="commentaire" rows="5" style="width:100%;">' . $enr['commentaire'] .'</textarea>';
         $tab['fiche'] .= '<div class="clear"></div>';
         $tab['fiche'] .= '<input class="app_btn" type="submit" style="width:50%;" name="modifier" value="modifier">';
         $tab['fiche'] .= '<input class="app_btn" type="submit" style="width:50%;" name="supprimer" value="supprimer">';

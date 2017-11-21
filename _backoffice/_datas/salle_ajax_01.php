@@ -15,13 +15,14 @@ if ($_POST['id'] == -2) {
 
     while($extract = $rqselect -> fetch(PDO::FETCH_ASSOC)){
 
+        $tab['liste'] .= '<div class="divchamp" style="width:2%;"><i class="fa fa-arrow-right fa-1x"></i></div></a>';
         $tab['liste'] .= '<div class="divtable"><a class="" onclick="listesalle(' . $extract['id_salle'] . ', ' . '1' . ')"">';
-        $tab['liste'] .= '<div class="divchamp" style="width:20%;"> ' . $extract['titre'] .'</div>';
-        $tab['liste'] .= '<div class="divchamp" style="width:20%;"> ' . $extract['description'] .'</div>';
-        $tab['liste'] .= '<div class="divchamp" style="width:20%;"> ' . $extract['pays'] .'</div>';
-        $tab['liste'] .= '<div class="divchamp" style="width:20%;"> ' . $extract['ville'] .'</div>';
+        $tab['liste'] .= '<div class="divchamp" style="width:8%;"> ' . $extract['titre'] .'</div>';
+        $tab['liste'] .= '<div class="divchamp" style="width:50%;"> ' . substr($extract['description'],0 , 90) .'</div>';
+        $tab['liste'] .= '<div class="divchamp" style="width:8%;"> ' . $extract['ville'] .'</div>';
+        $tab['liste'] .= '<div class="divchamp" style="width:8%;"> ' . $extract['pays'] .'</div>';
         $tab['liste'] .= '<div class="divchamp" style="width:10%;"><i class="fa fa-pencil-square fa-1x"></i></div></a>';
-        $tab['liste'] .= '<a class="" onclick="listesalles(' . $extract['id_salle'] . ', ' . '2' . ')""><div class="divchamp" style="width:10%;"><i class="fa fa-remove fa-1x"></i></div></a>';
+        $tab['liste'] .= '<a class="" onclick="listesalle(' . $extract['id_salle'] . ', ' . '2' . ')""><div class="divchamp" style="width:10%;"><i class="fa fa-remove fa-1x"></i></div></a>';
         $tab['liste'] .= '</div>';
         $tab['liste'] .= '<div class="clear"></div>';
 
@@ -56,7 +57,7 @@ if ($_POST['id'] != -1) {
         $tab['fiche'] .= '<input type="text" class="" style="width:25%;" id="pays" name="pays" value="' . $enr['pays'] .'" >';
         $tab['fiche'] .= '<div class="clear"></div>';
         $tab['fiche'] .= '<label for="description" style="width:100%;">description</label>';
-        $tab['fiche'] .= '<input type="text" id="description" name="description" placeholder="description" style="width:100%;" value="' . $enr['description'] .'" >';
+        $tab['fiche'] .= '<textarea id="description" name="description" style="width:100%;" row="5">' . $enr['description'] .'</textarea>';
         $tab['fiche'] .= '<div class="clear"></div>';
         $tab['fiche'] .= '<label for="cp" style="width:20%;">cp</label>';
         $tab['fiche'] .= '<label for="adresse" style="width:80%;">adresse</label>';

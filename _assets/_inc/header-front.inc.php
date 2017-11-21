@@ -18,6 +18,9 @@
 	      <li class="nav-item">
 	        <a class="nav-link" href=""><i class="fa fa-user" aria-hidden="true"></i> Espace membre</a>
 	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="<?= RACINE_SITE ?>_backoffice/index.php"><i class="fa fa-user" aria-hidden="true"></i> Espace backoffice</a>
+	      </li>
 		 </ul>
 
 	  </div>

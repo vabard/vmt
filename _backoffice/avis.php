@@ -17,7 +17,7 @@ if (isset($_POST['nouveau']) || isset($_POST['dupliquer'])) {
         $rqinsert -> bindParam(':id_salle', $_POST['id_salle'], PDO::PARAM_INT);
         $rqinsert -> bindParam(':id_membre', $_POST['id_membre'], PDO::PARAM_INT);
         $rqinsert -> bindParam(':commentaire', $_POST['commentaire'], PDO::PARAM_STR);
-        $rqinsert -> bindValue(':note', PDO::PARAM_INT);
+        $rqinsert -> bindParam(':note', $_POST['note'], PDO::PARAM_INT);
         $rqinsert -> bindValue(':date_enregistrement', date("Y-m-d\H:i:s"), PDO::PARAM_STR);
         if($rqinsert -> execute()){
             $msg.='<div class="validation">Ajout d\'un commentaire effectué avec succès.</div>';
@@ -38,7 +38,8 @@ if (isset($_POST['modifier'])) {
         $rqinsert -> bindParam(':id_salle', $_POST['id_salle'], PDO::PARAM_INT);
         $rqinsert -> bindParam(':id_membre', $_POST['id_membre'], PDO::PARAM_INT);
         $rqinsert -> bindParam(':commentaire', $_POST['commentaire'], PDO::PARAM_STR);
-        $rqinsert -> bindValue(':note', $_POST['note'], PDO::PARAM_INT);
+        $rqinsert -> bindParam(':note', $_POST['note'], PDO::PARAM_INT);
+        $rqinsert -> bindValue(':date_enregistrement', date("Y-m-d\H:i:s"), PDO::PARAM_STR);
         if($rqinsert -> execute()){
             $msg.='<div class="validation">Modification d\'un avis effectuée avec succès.</div>';
             }
@@ -118,7 +119,7 @@ require_once ('../_assets/_inc/header.inc.php');
                 <label for="id_membre" style="width:25%;">id_membre</label>
                 <label for="id_salle" style="width:25%;">id_salle</label>
                 <label for="civilite" style="width:25%;">note</label>
-                <input type="text" class="" style="width:25%;" id="id_avis" name="id_avis" placeholder="id_avis" >
+                <input type="text" class="" style="width:25%;" id="id" name="id" placeholder="id_avis" >
                 <input type="text" class="" style="width:25%;" id="id_membre" name="id_membre" placeholder="" >
                 <input type="text" class="" style="width:25%;" id="id_salle" name="id_salle" placeholder="" >
                 <input type="text" class="" style="width:25%;" id="note" name="note" placeholder="note" >

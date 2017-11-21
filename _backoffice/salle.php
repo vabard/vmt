@@ -130,7 +130,7 @@ require_once ('../_assets/_inc/header.inc.php');
                 <input type="text" id="pays" name="pays" placeholder="pays" style="width:25%;">
                 <div class="clear"></div>
                 <label for="description" style="width:100%;">description</label>
-                <input type="text" id="description" name="description" placeholder="description" style="width:100%;">
+                <textarea id="description" name="description" row="5" style="width:100%;"></textarea>
                 <div class="clear"></div>
                 <label for="cp" style="width:20%;">cp</label>
                 <label for="adresse" style="width:80%;">adresse</label>

@@ -103,20 +103,19 @@ require_once ('../_assets/_inc/haut.inc.php');
 require_once ('../_assets/_inc/header.inc.php');
 
 ?>
-
 <section class="app_container">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="app_blok">
-          	<h3>liste des  membre :</h3>
-        	<div id="listemembre" class="app_blok_scroll"></div>
+        <div class="app_asside_blok">
+            <h3>liste des  membre :</h3>
+            <div id="listemembre" class="app_asside_blok_scroll"></div>
         </div>
     </div>
 </section>
 <section class="app_container">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="app_blok">
-        	<div id="fichemembre" class="app_blok">
-			<h2><?= $action_comm;?></h2>
+        <div class="app_asside_blok">
+        	<div id="fichemembre" class="app_asside_blok">
+            <h2><?= $action_comm;?></h2>
             <?= $msg;?>
             <form method="post" action="">
                 <label for="pseudo" style="width:50%;">Pseudo</label>
