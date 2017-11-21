@@ -59,7 +59,7 @@ if (isset($_GET['id'])) {
             break;     
         case 'supprimer':
         $_POST['action'] = 'supprimer';
-        $msg.='<div class="erreur">Veuillez confirmer la suppression d\'un commande !</div>';
+        $msg.='<div class="erreur">Veuillez confirmer la suppression d\'une commande !</div>';
             break;
     }
 }
@@ -101,22 +101,20 @@ require_once ('../_assets/_inc/header.inc.php');
 <section class="app_container">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="app_blok">
-            <?= $msg;?>
         	<div id="fichecommande" class="app_blok">
-			<h2><?= $action_comm;?><?=$commentaire?></h2>
+			<h2><?= $action_comm;?></h2>
+            <?= $msg;?>
             <form method="post" action="">
                 <label for="id_commande" style="width:25%;">id_commande</label>
                 <label for="id_membre" style="width:25%;">id_membre</label>
                 <label for="id_produit" style="width:25%;">id_produit</label>
+                <label for="date_enregistrement" style="width:25%;">date_enregistrement</label>
                 <div class="clear"></div>
-                <input type="text" class="" style="width:25%;" id="id_commande" name="id_commande" placeholder="id_commande" >
+                <input type="text" class="" style="width:25%;" id="id" name="id" placeholder="id_commande" >
                 <input type="text" class="" style="width:25%;" id="id_membre" name="id_membre" placeholder="" >
                 <input type="text" class="" style="width:25%;" id="id_produit" name="id_produit" placeholder="" >
+                <input type="text" class="" style="width:25%;" id="date_enregistrement" name="date_enregistrement" placeholder="date_enregistrement" >
                 <div class="clear"></div>
-
-                <label for="date_enregistrement" style="width:50%;">date_enregistrement</label>
-                <div class="clear"></div>
-                <input type="text" class="" style="width:50%;" id="date_enregistrement" name="date_enregistrement" placeholder="date_enregistrement" >
                
                 <div class="clear"></div>
                 <!-- <div class="app_btn" style="width:25%;"><a href="#.php">modifier</a></div> -->

@@ -1,174 +1,62 @@
-html, body, div, span, applet, object, iframe,
- h1, h2,  h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-
-*{box-sizing: border-box;}
-
 body{
-	height: 95%;
-	width: 100%;
-	font-family: 'Acme', sans-serif;
-	color: #000;
-	/*margin: -20px 20px -20px 0;*/
-	/*font-size: 14px;*/
-	background: rgba( 140, 178, 226 , 1);
-	/*background: rgba(13, 95, 18, 1); vert*/
-	/*background: repeat top/100% url('../_img/adam-krowitz-386792.jpg');*/
-	/*background: repeat bottom/100% url('../_img/spencer-watson-3672332.jpg');*/
-	/*background-blend-mode: darken, luminosity;*/
-	/*background-size: cover;*/
-	/*background-size: cover;*/
-	/*overflow: hidden;*/
+	margin-top: 100px;
 }
-
-h1, h2, h3, h4, h5 {
-	font-family: 'Acme';
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-h1{
-	font-size: 1.5em;
-}
-
-h2{
-	font-size: 1.2em;
-	padding-top: 15px;
-}
-
-h3{
-	font-size: 1.2em;
-}
-
-h4{
-	font-size: .8em;
-}
-
-h5{
-	font-size: .6em;
-}
-
-
-p{
-	font-family: 'Acme', 'calibri', sans-serif;
-	padding: 5px 0  5px 0;
-	font-size: 0.9em;
-}
-
-p:hover{
-	background: #e3eefe;
-	cursor: default;
-}
-
-header{
-
-}
-
-main{
-
-}
-
-section{
-
-}
-
-nav {
-
-}
-
-a, a:visited, a:active, a:hover{
-	color: #000;
-	text-decoration: none;
-}
-
-footer{
-	font-size: 1em;
-	font-family: 'Acme';
-	text-align: right!important;
-	min-height: 30px;
-	vertical-align: bottom;
-}
-
-/*=============================================================================================================== */
-/*========================================================================================== NAV */
 /*=============================================================================================================== */
 
-.jumbotron{
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	border-radius: 0px;
-	background-color: transparent;
-}
-
-.jumbotron>img{width: 100px;}
-
-a > .fa {padding: 0px 15px 0px 0;}
-.link {cursor:pointer;}
-
-.navbar {
+.navbar_asside {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	max-width: 20%;
+	min-width: 20%;
+	height: 100%;
+	/*margin: 30px 15px 0 0;*/
+	text-align: left;
+	background-color: rgba(100%, 100%, 100%, 0.9);
 	border: 1px solid rgb(114, 140, 165, .5);
 	border-radius: 0px;
-	margin: 30px 15px 0 0;
-	text-align: center;
-	background: #fff;
-	background-color: rgba(100%, 100%, 100%, 0.9);
-	position: relative;
-	min-height: 50px;
-	-webkit-box-shadow: 12px 10px 5px -1px rgba( 33, 47, 61 ,1);
-	-moz-box-shadow: 12px 10px 5px -1px rgba( 33, 47, 61 ,1);
-	box-shadow: 12px 10px 5px -1px rgba( 33, 47, 61 ,1);
 }
 
-.navbar_header {
-	float: left;
+.navbar_asside_header {
+	min-width: 50px;
+	/*float: left;*/
 	padding-right: 30px;
 }
 
-.navbar_logo {
+.navbar_asside_logo {
 	padding-top: 0px;
 	padding-left: 5px;
 }
 
-.navbar_logo img{
+.navbar_asside_logo img{
 	padding-top: 8px;
 	padding-left: 5px;
 	width: 50px;
 }
 
-.navbar_nav > li {
-	position: relative;
-	float: left;
+.navbar_asside_nav > ul {
+
+}
+
+.navbar_asside_nav > li {
+	/*position: relative;*/
+	/*float: left;*/
 	list-style: none;
 }
 
-.navbar_nav > li > a {
+.navbar_asside_nav > li > a {
   	line-height: 40px;
 	padding: 10px 10px 10px 10px;
 	transition: font-size 0.5s;
 	display: block;
 }
 
-.navbar_nav > li > a:hover, .navbar_nav > li > a:focus {
+.navbar_asside_nav > li > a:hover, .navbar_asside_nav > li > a:focus {
 	background-color:  #ec7063;
 }
 
+/*=============================================================================================================== */
 
 .navbarfixed {
 	position: fixed;
@@ -191,96 +79,13 @@ a > .fa {padding: 0px 15px 0px 0;}
 	margin-top: 50px;
 }
 
-.navbar_burger {
-	display: none;
-	float: right;
-	margin: 20px 20px 20px 20px;
-}
-
-/*=============================================================================================================== */
-/*========================================================================================== FORMULAIRES */
-/*=============================================================================================================== */
-
-
-form{
-
-}
-
-label, input, select{
-  display: inline-block;
-  line-height: 30px;
-  float: left;
-}
-
-label.check{
-  display: inline;
-}
-
-input, datalist, select, textarea{
-  font-size: 1.1em;
-  border-radius: 5px;
-  width: 100%;
-  padding: 10px;
-}
-
-input:disabled { background: #fff; }
-input:disabled:hover { color: green; }
-
-option { font-size: 14px; }
-
-.form_btn{
-	text-align: center;
-}
-
-table {
-  max-width: 1000px;
-  /*margin: 0 auto;*/
-}
-
-tr {
-  /* background: #89297C; */
-  /*border: 1px solid #000;*/
-  padding: 5px;
-}
-
-th {
-  /*border-bottom: 2px solid rgba(65, 131, 178, 1);;*/
-  padding:10px 20px 10px 0;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: 'Acme';
-  color: #000;
-  text-align: left;
-}
-
-td {
-  /*border: 1px solid white;*/
-  font-size: 14px;
-  /*font-family: 'Acme';*/
-  padding:20px 20px 20px 0;
-  border-top: 1px solid rgba(65, 131, 178, 1);
-  vertical-align: middle;
-}
-
-td img{height: 50px;}
-
-
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="text"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-  display: block;
-}
 
 /*=============================================================================================================== */
 /*========================================================================================== APPLI */
 /*=============================================================================================================== */
 .app_container{
 	width: 90%;
-	margin: 0 auto;
+	margin: 20px auto;
 	max-width: 1200px;
 }
 
@@ -289,13 +94,53 @@ input[type="submit"] {
 	margin: 15px 15px 0 0;
 	border:1px solid #e1e2e3;
 	border-radius: 3px;
-	background: #f5f5f5;
+	/*background: #f5f5f5;*/
+	/*background: transparent;*/
 	background-color: rgba(100%, 100%, 100%, 0.9);
 }
 
 .app_blok_scroll {
 	padding: 10px;
 	margin: 15px 15px 0 0;
+	border:1px solid #e1e2e3;
+	border-radius: 3px;
+	background: #f5f5f5;
+	background-color: rgba(100%, 100%, 100%, 0.9);
+	height: 200px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+/*=============================================================================================================== */
+.app_asside_page{
+	width: 80%;
+	/*height: 100vh;*/
+	/*min-height: 100vh;*/
+	/*max-height: 100vh;*/
+	margin: 0 0 0 20%;
+	/*overflow-x: hidden;*/
+	/*overflow-y: scroll;*/
+	/*max-width: 1200px;*/
+}
+.app_asside_container{
+	width: 100%;
+	margin: 0 0 0 0;
+	/*max-width: 1200px;*/
+}
+
+.app_asside_blok {
+	padding: 10px;
+	margin: 0px 0px 0 0;
+	border:1px solid #e1e2e3;
+	border-radius: 3px;
+	/*background: #f5f5f5;*/
+	/*background: transparent;*/
+	background-color: rgba(100%, 100%, 100%, 0.9);
+}
+
+.app_asside_blok_scroll {
+	padding: 10px;
+	margin: 15px 0 0 0;
 	border:1px solid #e1e2e3;
 	border-radius: 3px;
 	background: #f5f5f5;
@@ -369,6 +214,83 @@ input[type="submit"] {
 	padding: 0;
 }
 
+/*=============================================================================================================== */
+/*========================================================================================== FORMULAIRES */
+/*=============================================================================================================== */
+
+
+form{
+
+}
+
+label, input, select, textarea{
+  display: inline-block;
+  line-height: 30px;
+  float: left;
+}
+
+label.check{
+  display: inline;
+}
+
+input, datalist, select, textarea{
+  font-size: 1.1em;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+}
+
+input:disabled { background: #fff; }
+input:disabled:hover { color: green; }
+
+option { font-size: 14px; }
+
+.form_btn{
+	text-align: center;
+}
+
+table {
+  max-width: 1000px;
+  /*margin: 0 auto;*/
+}
+
+tr {
+  /* background: #89297C; */
+  /*border: 1px solid #000;*/
+  padding: 5px;
+}
+
+th {
+  /*border-bottom: 2px solid rgba(65, 131, 178, 1);;*/
+  padding:10px 20px 10px 0;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Acme';
+  color: #000;
+  text-align: left;
+}
+
+td {
+  /*border: 1px solid white;*/
+  font-size: 14px;
+  /*font-family: 'Acme';*/
+  padding:20px 20px 20px 0;
+  border-top: 1px solid rgba(65, 131, 178, 1);
+  vertical-align: middle;
+}
+
+td img{height: 50px;}
+
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="text"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  display: block;
+}
 
 /*=============================================================================================================== */
 /*========================================================================================== GRAPHIQUE */
