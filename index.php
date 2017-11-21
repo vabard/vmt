@@ -45,29 +45,6 @@ if ($resultat) {
 	$capacites = $resultat -> fetchAll();
 }
 
-// Filtre - Capacité 
-if (isset($_GET['capacite']) && !empty($_GET['capacite']) && is_numeric($_GET['capacite'])) {
-	$req = $bdd -> prepare("SELECT p.*, s.*
-							FROM salle s
-							LEFT JOIN produit p 
-							ON p.id_salle = s.id_salle
-							WHERE p.etat = 'libre' AND p.date_arrivee > CURDATE() AND s.capacite = :capacite");
-
-	
-	$req -> bindParam(':capacite', $_GET['capacite'], PDO::PARAM_STR);
-	$req -> execute();
-	if ($req -> rowCount() > 0) {
-		$produits = $req -> fetchAll();
-	} else {
-		$req = $bdd -> query("	SELECT p.*, s.*
-								FROM salle s
-								LEFT JOIN produit p 
-								ON p.id_salle = s.id_salle
-								WHERE p.etat = 'libre' AND p.date_arrivee > CURDATE()");
-
-		$produits = $req -> fetchAll();	
-	}	
-} 
 
 /*---------------------------------------------------------------*/
 
@@ -76,36 +53,7 @@ $resultat = $bdd -> query("SELECT DISTINCT prix FROM produit ORDER BY prix");
 if ($resultat) {
 	$prixs = $resultat -> fetchAll();
 }
-/*$resultat = $bdd -> query("SELECT MAX(prix) FROM produit");
-if ($resultat) {
-	$prixs = $resultat -> fetchAll();
-	
-}*/
 
-/*// Filtre - Prix 
-if (isset($_GET['prix']) && !empty($_GET['prix']) && is_numeric($_GET['prix'])) {
-	$req = $bdd -> prepare("SELECT p.*, s.*
-							FROM salle s
-							LEFT JOIN produit p 
-							ON p.id_salle = s.id_salle
-							WHERE p.etat = 'libre' AND p.date_arrivee > CURDATE() AND p.prix <= :prix");
-
-	
-	$req -> bindParam(':prix', $_GET['prix'], PDO::PARAM_STR);
-	$req -> execute();
-	if ($req -> rowCount() > 0) {
-		$produits = $req -> fetchAll();
-	} else {
-		$req = $bdd -> query("	SELECT p.*, s.*
-								FROM salle s
-								LEFT JOIN produit p 
-								ON p.id_salle = s.id_salle
-								WHERE p.etat = 'libre' AND p.date_arrivee > CURDATE()");
-
-		$produits = $req -> fetchAll();	
-	}	
-} 
-*/
 
 
 
@@ -144,7 +92,8 @@ require_once ('_assets/_inc/header-front.inc.php');
 		<form method="get" action="">
 			<div class="form-group">
 		    <select class="form-control" id="selectCapacite" name="selectCapacite">
-				<?php foreach ($capacites AS $capacite) : ?>
+		    	<option></option>
+				<?php foreach ($capacites AS $capacite) : ?>	
 		      	<option><?= $capacite['capacite']; ?></option>
 				<?php endforeach; ?>
 		    </select>
@@ -157,6 +106,7 @@ require_once ('_assets/_inc/header-front.inc.php');
 
 			<div class="form-group">
 		    <select class="form-control" id="selectPrix" name="selectPrix">
+				<option></option>
 				<?php foreach ($prixs AS $prix) : ?>
 		      	<option><?= $prix['prix']; ?></option>
 				<?php endforeach; ?>
